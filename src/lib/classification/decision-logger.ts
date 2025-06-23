@@ -166,7 +166,15 @@ export class DecisionLogger {
     }
     decisions: DecisionLogEntry[]
     auditTrail: AuditLogEntry[]
-    summary: ReturnType<typeof this.generateLegalSummary>
+    summary: {
+      classificationId: string
+      startTime: Date
+      endTime: Date
+      totalDecisions: number
+      overallConfidence: number
+      lowConfidenceDecisions: DecisionLogEntry[]
+      auditEventCount: number
+    }
   } {
     return {
       metadata: {

@@ -30,18 +30,16 @@ export default function DynamicForm({
     const schemaFields: Record<string, any> = {}
     
     fields.forEach(field => {
-      let fieldSchema = z.string()
+      let fieldSchema: any
       
       if (field.type === 'number') {
-        fieldSchema = z.number()
-      }
-      
-      if (field.required) {
-        fieldSchema = field.type === 'number' 
+        fieldSchema = field.required 
           ? z.number().min(0, 'This field is required')
-          : z.string().min(1, 'This field is required')
+          : z.number().optional()
       } else {
-        fieldSchema = fieldSchema.optional()
+        fieldSchema = field.required
+          ? z.string().min(1, 'This field is required')
+          : z.string().optional()
       }
       
       schemaFields[field.name] = fieldSchema

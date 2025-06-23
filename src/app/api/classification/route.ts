@@ -48,7 +48,7 @@ export async function GET(request: NextRequest) {
     //   .orderBy(desc(classifications.createdAt))
 
     // Mock response
-    const results = []
+    const results: any[] = []
 
     return NextResponse.json({ classifications: results })
   } catch (error) {

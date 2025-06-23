@@ -52,6 +52,13 @@ export const ClassificationDecisionSchema = z.object({
   legalReferences: z.array(z.string()).optional()
 })
 
+const MaterialsArraySchema = z.array(z.object({
+  name: z.string().min(1, 'Material name required'),
+  percentage: z.number().min(0).max(100),
+  hsCode: z.string().optional(),
+  description: z.string().optional()
+})).min(1, 'At least one material required')
+
 export const GRIStepValidation = {
   'gri_1': z.object({
     productDescription: z.string().min(20),
@@ -66,7 +73,7 @@ export const GRIStepValidation = {
   }),
   
   'gri_2b': z.object({
-    materials: MaterialCompositionSchema.shape.materials,
+    materials: MaterialsArraySchema,
     primaryMaterial: z.string(),
     determinationMethod: z.enum(['weight', 'value', 'volume', 'surface_area'])
   }),

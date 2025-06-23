@@ -74,7 +74,7 @@ export default function MaterialCompositionForm({ onSubmit, initialData }: Mater
         </label>
         <select
           {...register('determinationMethod')}
-          className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue"
+          className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue text-gray-900 bg-white"
         >
           <option value="weight">By Weight</option>
           <option value="value">By Value</option>
@@ -113,7 +113,7 @@ export default function MaterialCompositionForm({ onSubmit, initialData }: Mater
                 </label>
                 <input
                   {...register(`materials.${index}.name`)}
-                  className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue text-sm"
+                  className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue text-gray-900 bg-white text-sm"
                   placeholder="e.g., Stainless Steel"
                 />
                 {errors.materials?.[index]?.name && (
@@ -129,7 +129,7 @@ export default function MaterialCompositionForm({ onSubmit, initialData }: Mater
                   type="number"
                   step="0.1"
                   {...register(`materials.${index}.percentage`, { valueAsNumber: true })}
-                  className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue text-sm"
+                  className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue text-gray-900 bg-white text-sm"
                   placeholder="0.0"
                 />
                 {errors.materials?.[index]?.percentage && (
@@ -144,7 +144,7 @@ export default function MaterialCompositionForm({ onSubmit, initialData }: Mater
               </label>
               <input
                 {...register(`materials.${index}.hsCode`)}
-                className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue text-sm"
+                className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue text-gray-900 bg-white text-sm"
                 placeholder="e.g., 7304.31"
               />
             </div>
@@ -156,7 +156,7 @@ export default function MaterialCompositionForm({ onSubmit, initialData }: Mater
               <textarea
                 {...register(`materials.${index}.description`)}
                 rows={2}
-                className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue text-sm"
+                className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue text-gray-900 bg-white text-sm"
                 placeholder="Additional details about this material..."
               />
             </div>
@@ -185,7 +185,7 @@ export default function MaterialCompositionForm({ onSubmit, initialData }: Mater
             type="number"
             step="0.01"
             {...register('totalWeight', { valueAsNumber: true })}
-            className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue"
+            className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue text-gray-900 bg-white"
             placeholder="0.00"
           />
         </div>
@@ -196,7 +196,7 @@ export default function MaterialCompositionForm({ onSubmit, initialData }: Mater
           </label>
           <select
             {...register('weightUnit')}
-            className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue"
+            className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue text-gray-900 bg-white"
           >
             <option value="kg">Kilograms (kg)</option>
             <option value="g">Grams (g)</option>
@@ -213,7 +213,7 @@ export default function MaterialCompositionForm({ onSubmit, initialData }: Mater
         <textarea
           {...register('notes')}
           rows={3}
-          className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue"
+          className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue text-gray-900 bg-white"
           placeholder="Any additional information about the material composition..."
         />
       </div>

@@ -158,7 +158,7 @@ export default function ChatInterface({
             onChange={(e) => setInputValue(e.target.value)}
             onKeyPress={handleKeyPress}
             placeholder="Type your message..."
-            className="flex-1 px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue resize-none"
+            className="flex-1 px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue resize-none text-gray-900 bg-white"
             rows={2}
           />
           <button

@@ -56,7 +56,7 @@ export default function ProductDetailsForm({ onSubmit, initialData }: ProductDet
           </label>
           <input
             {...register('productName')}
-            className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue"
+            className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue text-gray-900 bg-white"
             placeholder="e.g., XYZ-2000 Industrial Printer"
           />
           {errors.productName && (
@@ -70,7 +70,7 @@ export default function ProductDetailsForm({ onSubmit, initialData }: ProductDet
           </label>
           <input
             {...register('countryOfOrigin')}
-            className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue"
+            className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue text-gray-900 bg-white"
             placeholder="e.g., United States"
           />
           {errors.countryOfOrigin && (
@@ -86,7 +86,7 @@ export default function ProductDetailsForm({ onSubmit, initialData }: ProductDet
         <textarea
           {...register('primaryFunction')}
           rows={3}
-          className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue"
+          className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue text-gray-900 bg-white"
           placeholder="Describe the main purpose and function of this product..."
         />
         {errors.primaryFunction && (
@@ -101,7 +101,7 @@ export default function ProductDetailsForm({ onSubmit, initialData }: ProductDet
         <textarea
           {...register('intendedUse')}
           rows={3}
-          className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue"
+          className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue text-gray-900 bg-white"
           placeholder="How is this product intended to be used by the end user?"
         />
         {errors.intendedUse && (
@@ -116,7 +116,7 @@ export default function ProductDetailsForm({ onSubmit, initialData }: ProductDet
           </label>
           <select
             {...register('targetMarket')}
-            className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue"
+            className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue text-gray-900 bg-white"
           >
             <option value="">Select target market</option>
             <option value="consumer">Consumer/Retail</option>
@@ -137,7 +137,7 @@ export default function ProductDetailsForm({ onSubmit, initialData }: ProductDet
           </label>
           <select
             {...register('isAssembled')}
-            className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue"
+            className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue text-gray-900 bg-white"
           >
             <option value="">Select assembly status</option>
             <option value="yes">Fully Assembled</option>
@@ -157,7 +157,7 @@ export default function ProductDetailsForm({ onSubmit, initialData }: ProductDet
         <textarea
           {...register('additionalInfo')}
           rows={3}
-          className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue"
+          className="w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue text-gray-900 bg-white"
           placeholder="Any other relevant information about the product..."
         />
       </div>

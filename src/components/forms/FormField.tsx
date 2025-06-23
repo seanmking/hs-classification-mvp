@@ -14,7 +14,7 @@ interface FormFieldProps {
 }
 
 export default function FormField({ field, register, error }: FormFieldProps) {
-  const baseInputClasses = "w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue"
+  const baseInputClasses = "w-full px-3 py-2 border legal-border rounded-md focus:outline-none focus:ring-2 focus:ring-legal-blue text-gray-900 bg-white"
 
   const renderField = () => {
     switch (field.type) {
