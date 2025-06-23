@@ -10,7 +10,9 @@
     "db:push": "drizzle-kit push:sqlite",
     "db:migrate": "drizzle-kit generate:sqlite && drizzle-kit migrate:sqlite",
     "db:studio": "drizzle-kit studio",
-    "db:seed": "tsx scripts/seed.ts"
+    "db:seed": "tsx scripts/seed.ts",
+    "db:seed-hs": "tsx src/db/seed-hs-codes.ts",
+    "db:seed-all": "npm run db:seed && npm run db:seed-hs"
   },
   "dependencies": {
     "next": "14.0.0",
@@ -27,13 +29,15 @@
     "date-fns": "^2.30.0",
     "nanoid": "^5.0.0",
     "clsx": "^2.0.0",
-    "tailwind-merge": "^2.0.0"
+    "tailwind-merge": "^2.0.0",
+    "papaparse": "^5.4.1"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/better-sqlite3": "^7.6.0",
+    "@types/papaparse": "^5.3.14",
     "autoprefixer": "^10.0.1",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
