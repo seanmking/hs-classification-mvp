@@ -1,0 +1,83 @@
+{
+  "chapters": {
+    "39": {
+      "description": "Plastics and articles thereof",
+      "notes": [
+        "This Chapter does not cover goods of heading 96.01 to 96.06 or 96.15",
+        "Plastics, rubber and articles thereof, and goods of heading 40.16, are to be classified according to their form"
+      ]
+    },
+    "73": {
+      "description": "Articles of iron or steel",
+      "notes": [
+        "In this Chapter the expression 'cast iron' applies to products obtained by casting in which iron predominates",
+        "In this Chapter the word 'wire' means hot or cold-formed products of any cross-sectional shape"
+      ]
+    },
+    "84": {
+      "description": "Nuclear reactors, boilers, machinery and mechanical appliances; parts thereof",
+      "notes": [
+        "This Chapter does not cover machinery or appliances of heading 84.01 to 84.24",
+        "Subject to certain exceptions, machines with multiple functions are classified according to principal function"
+      ]
+    },
+    "85": {
+      "description": "Electrical machinery and equipment and parts thereof",
+      "notes": [
+        "This Chapter does not cover electrical parts of machinery of Chapter 84",
+        "Heading 85.01 to 85.04 cover electrical motors and generators"
+      ]
+    }
+  },
+  "headings": {
+    "3926": {
+      "code": "3926",
+      "description": "Other articles of plastics",
+      "chapter": "39"
+    },
+    "7304": {
+      "code": "7304",
+      "description": "Tubes, pipes and hollow profiles, seamless, of iron or steel",
+      "chapter": "73"
+    },
+    "8471": {
+      "code": "8471",
+      "description": "Automatic data-processing machines and units thereof",
+      "chapter": "84",
+      "notes": [
+        "This heading covers automatic data-processing machines",
+        "Includes digital and analog computers",
+        "Portable machines weighing not more than 10 kg are classified in 8471.30"
+      ]
+    },
+    "8517": {
+      "code": "8517",
+      "description": "Telephone sets, including smartphones",
+      "chapter": "85",
+      "notes": [
+        "Includes telephones for cellular networks",
+        "Smartphones are classified under 8517.12"
+      ]
+    }
+  },
+  "subheadings": {
+    "847130": {
+      "code": "847130",
+      "description": "Portable automatic data-processing machines, weighing not more than 10 kg",
+      "heading": "8471",
+      "examples": ["Laptops", "Notebooks", "Tablets with keyboards"]
+    },
+    "847141": {
+      "code": "847141",
+      "description": "Other automatic data-processing machines comprising in the same housing at least a CPU and input/output unit",
+      "heading": "8471",
+      "examples": ["Desktop computers", "All-in-one computers"]
+    },
+    "851712": {
+      "code": "851712",
+      "description": "Telephones for cellular networks or for other wireless networks",
+      "heading": "8517",
+      "examples": ["Smartphones", "Cell phones", "Mobile phones"]
+    }
+  }
+}

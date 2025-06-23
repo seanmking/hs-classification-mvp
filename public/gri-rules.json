@@ -1,0 +1,189 @@
+{
+  "rules": [
+    {
+      "id": "gri_1",
+      "order": 1,
+      "title": "Classification by Terms of Headings",
+      "fullText": "For legal purposes, classification shall be determined according to the terms of the headings and any relative section or chapter notes and, provided such headings or notes do not otherwise require, according to the following provisions.",
+      "explanation": "The first rule establishes that classification is primarily determined by the wording of headings and any relevant notes. Only if these don't provide a clear answer should you proceed to other rules.",
+      "examples": [
+        {
+          "product": "Laptop computer",
+          "application": "Heading 8471 specifically mentions 'automatic data-processing machines', which directly describes a laptop.",
+          "result": "Classified under 8471 by GRI 1"
+        }
+      ],
+      "keyQuestions": [
+        "Does a heading specifically describe this product?",
+        "Are there any section or chapter notes that apply?",
+        "Is the product clearly and unambiguously covered by a single heading?"
+      ]
+    },
+    {
+      "id": "gri_2a",
+      "order": 2,
+      "title": "Incomplete or Unfinished Articles",
+      "fullText": "Any reference in a heading to an article shall be taken to include a reference to that article incomplete or unfinished, provided that, as presented, the incomplete or unfinished article has the essential character of the complete or finished article.",
+      "explanation": "Incomplete or unassembled products can be classified as if they were complete if they have the essential character of the finished product.",
+      "examples": [
+        {
+          "product": "Unassembled bicycle (all parts included)",
+          "application": "Even though unassembled, it has all parts needed to make a complete bicycle.",
+          "result": "Classified as a complete bicycle"
+        }
+      ],
+      "keyQuestions": [
+        "Is the article incomplete or unfinished?",
+        "Does it have the essential character of the complete article?",
+        "Can it function as intended once assembled/completed?"
+      ]
+    },
+    {
+      "id": "gri_2b",
+      "order": 2,
+      "title": "Mixtures and Composite Goods",
+      "fullText": "Any reference in a heading to a material or substance shall be taken to include a reference to mixtures or combinations of that material or substance with other materials or substances.",
+      "explanation": "Products made of multiple materials can be classified according to the material that gives them their essential character.",
+      "examples": [
+        {
+          "product": "Plastic chair with metal legs",
+          "application": "The plastic seat and back give the essential character.",
+          "result": "Classified as plastic furniture"
+        }
+      ],
+      "keyQuestions": [
+        "Is the product made of multiple materials?",
+        "Which material gives the product its essential character?",
+        "What is the primary material by weight, value, or function?"
+      ]
+    },
+    {
+      "id": "gri_3a",
+      "order": 3,
+      "title": "Most Specific Description",
+      "fullText": "The heading which provides the most specific description shall be preferred to headings providing a more general description.",
+      "explanation": "When goods could fall under multiple headings, choose the one that describes them most specifically.",
+      "examples": [
+        {
+          "product": "Electric toothbrush",
+          "application": "Could be 'electrical appliance' or 'toothbrush'. 'Electric toothbrush' is more specific.",
+          "result": "Classified under the more specific heading"
+        }
+      ],
+      "keyQuestions": [
+        "Which heading provides the most specific description?",
+        "Does any heading mention the product by name?",
+        "Which heading narrows down the product category most?"
+      ]
+    },
+    {
+      "id": "gri_3b",
+      "order": 3,
+      "title": "Essential Character",
+      "fullText": "Mixtures, composite goods consisting of different materials or made up of different components shall be classified as if they consisted of the material or component which gives them their essential character.",
+      "explanation": "For composite goods, classify based on the component that gives the product its essential character.",
+      "examples": [
+        {
+          "product": "Leather wallet with metal clasp",
+          "application": "The leather body gives the wallet its essential character, not the metal clasp.",
+          "result": "Classified as leather goods"
+        }
+      ],
+      "keyQuestions": [
+        "What gives the product its essential character?",
+        "Which component is most important for the product's function?",
+        "Consider bulk, quantity, weight, value, and role in use"
+      ]
+    },
+    {
+      "id": "gri_3c",
+      "order": 3,
+      "title": "Last Heading in Numerical Order",
+      "fullText": "When goods cannot be classified by reference to 3(a) or 3(b), they shall be classified under the heading which occurs last in numerical order.",
+      "explanation": "If neither specificity nor essential character can determine classification, use the heading that appears last numerically.",
+      "examples": [
+        {
+          "product": "Product equally described by headings 7013 and 7014",
+          "application": "Cannot determine by specificity or essential character.",
+          "result": "Classified under 7014 (last in numerical order)"
+        }
+      ],
+      "keyQuestions": [
+        "Have attempts to classify by 3(a) and 3(b) failed?",
+        "What are all the equally applicable headings?",
+        "Which heading appears last numerically?"
+      ]
+    },
+    {
+      "id": "gri_4",
+      "order": 4,
+      "title": "Goods Not Elsewhere Specified",
+      "fullText": "Goods which cannot be classified in accordance with the above rules shall be classified under the heading appropriate to the goods to which they are most akin.",
+      "explanation": "For goods not covered by any specific heading, classify them with the most similar goods.",
+      "examples": [
+        {
+          "product": "New invention not in tariff schedule",
+          "application": "Find the most similar existing product.",
+          "result": "Classified with most similar goods"
+        }
+      ],
+      "keyQuestions": [
+        "Is this product not covered by any heading?",
+        "What existing products are most similar?",
+        "Consider function, composition, and use"
+      ]
+    },
+    {
+      "id": "gri_5",
+      "order": 5,
+      "title": "Packing Materials and Containers",
+      "fullText": "Packing materials and packing containers presented with the goods therein shall be classified with the goods if they are suitable for repetitive use.",
+      "explanation": "Packaging is classified with the goods unless it's clearly suitable for repetitive use or gives the whole its essential character.",
+      "examples": [
+        {
+          "product": "Camera in a reusable carrying case",
+          "application": "The case is suitable for repetitive use.",
+          "result": "Case may be classified separately"
+        }
+      ],
+      "keyQuestions": [
+        "Is the packaging suitable for repetitive use?",
+        "Is it specially shaped or fitted for the goods?",
+        "Does the packaging give essential character to the whole?"
+      ]
+    },
+    {
+      "id": "gri_6",
+      "order": 6,
+      "title": "Subheading Classification",
+      "fullText": "For legal purposes, the classification of goods in the subheadings of a heading shall be determined according to the terms of those subheadings and any related subheading notes and, mutatis mutandis, to the above rules.",
+      "explanation": "Once the heading is determined, apply the same rules (GRI 1-5) to determine the correct subheading within that heading.",
+      "examples": [
+        {
+          "product": "Laptop classified under heading 8471",
+          "application": "Apply GRI rules to choose between subheadings like 8471.30 (portable) vs 8471.41 (desktop).",
+          "result": "8471.30 for portable machines under 10kg"
+        }
+      ],
+      "keyQuestions": [
+        "What subheadings exist within the determined heading?",
+        "Apply GRI 1-5 to these subheadings",
+        "Compare only subheadings at the same level"
+      ]
+    }
+  ],
+  "applicationOrder": [
+    "Always start with GRI 1",
+    "If GRI 1 doesn't resolve, consider GRI 2 if applicable",
+    "If multiple headings possible, apply GRI 3 (a, then b, then c)",
+    "If no heading fits, use GRI 4",
+    "Consider GRI 5 for packaging questions",
+    "Use GRI 6 for subheading determination"
+  ],
+  "legalNotes": [
+    "These rules must be applied in sequential order",
+    "Document reasoning at each step for legal defensibility",
+    "Chapter and section notes have same legal force as headings",
+    "Classification decisions may be subject to customs authority review"
+  ]
+}
