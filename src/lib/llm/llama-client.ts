@@ -62,31 +62,32 @@ export class LlamaClient {
           content: request.prompt
         }
       ],
-      temperature: request.temperature ?? 0.3, // Lower temp for classification accuracy
-      max_tokens: request.maxTokens ?? 1000,
-      top_p: request.topP ?? 0.9,
-      stop: request.stopSequences
+      stream: false,
+      options: {
+        temperature: request.temperature ?? 0.3, // Lower temp for classification accuracy
+        num_predict: request.maxTokens ?? 1000,
+        top_p: request.topP ?? 0.9,
+        stop: request.stopSequences
+      }
     }
     
     let lastError: Error | null = null
     
     for (let attempt = 0; attempt < this.config.maxRetries; attempt++) {
       try {
-        const response = await this.makeRequest('/v1/chat/completions', payload)
+        const response = await this.makeRequest('/api/chat', payload)
         
-        if (!response.choices || response.choices.length === 0) {
-          throw new Error('No response choices returned from Llama')
+        if (!response.message) {
+          throw new Error('No response message returned from Ollama')
         }
         
-        const choice = response.choices[0]
-        
         return {
-          text: choice.message.content,
-          finishReason: choice.finish_reason,
-          usage: response.usage || {
-            promptTokens: 0,
-            completionTokens: 0,
-            totalTokens: 0
+          text: response.message.content,
+          finishReason: response.done ? 'stop' : 'length',
+          usage: {
+            promptTokens: response.prompt_eval_count || 0,
+            completionTokens: response.eval_count || 0,
+            totalTokens: (response.prompt_eval_count || 0) + (response.eval_count || 0)
           }
         }
       } catch (error) {
@@ -182,7 +183,7 @@ Format your response as JSON with the following structure:
    */
   async healthCheck(): Promise<boolean> {
     try {
-      const response = await fetch(`${this.config.apiUrl}/health`, {
+      const response = await fetch(`${this.config.apiUrl}/api/tags`, {
         method: 'GET',
         signal: AbortSignal.timeout(5000)
       })
