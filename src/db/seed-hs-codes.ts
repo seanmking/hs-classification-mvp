@@ -106,19 +106,23 @@ function validateHSCodeCSV(data: any[]): data is HSCodeCSVRow[] {
   return true
 }
 
-function validateSectionCSV(data: any[]): data is SectionCSVRow[] {
+function validateSectionCSV(data: any[]): boolean {
   if (!data || data.length === 0) {
     console.error('Section CSV data is empty')
     return false
   }
   
-  const requiredFields = ['id', 'description']
-  const hasRequiredFields = requiredFields.every(field => 
-    field in data[0]
+  // Check for actual fields in the CSV
+  const actualFields = Object.keys(data[0])
+  console.log('Section CSV fields:', actualFields)
+  
+  // Check if we have section and name fields
+  const hasRequiredFields = ['section', 'name'].every(field => 
+    actualFields.includes(field)
   )
   
   if (!hasRequiredFields) {
-    console.error('Section CSV missing required fields:', requiredFields)
+    console.error('Section CSV missing required fields')
     return false
   }
   
@@ -178,15 +182,13 @@ function transformHSCodeRow(row: HSCodeCSVRow): NewHSCode[] {
   return codes
 }
 
-function transformSectionRow(row: SectionCSVRow): NewHSCode {
+function transformSectionRow(row: any): NewHSCode {
   return {
-    code: `S${row.id}`,
-    description: row.description,
+    code: `S${row.section}`,
+    description: row.name,
     level: 'section' as const,
     parentCode: undefined,
-    notes: JSON.stringify([
-      `This section covers chapters ${row.from_chapter} to ${row.to_chapter}`
-    ]),
+    notes: JSON.stringify([]),
     exclusions: JSON.stringify([])
   }
 }

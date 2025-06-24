@@ -1,7 +1,26 @@
 import { z } from 'zod'
 
-// Re-export enhanced types from WCO-compliant engine
-export {
+// Import everything from WCO-compliant engine
+import { 
+  WCOCompliantGRIEngine,
+  COMPLETE_GRI_RULES,
+  type GRIRule,
+  type ValidationRule,
+  type DecisionCriterion,
+  type NextStep,
+  type Condition,
+  type Example,
+  type GRIDecision,
+  type GRIContext,
+  type Material,
+  type PhysicalCharacteristics,
+  type CommercialInfo,
+  type HSHeading,
+  type ExcludedHeading
+} from './gri-engine-wco'
+
+// Re-export types
+export type {
   GRIRule,
   ValidationRule,
   DecisionCriterion,
@@ -14,16 +33,15 @@ export {
   PhysicalCharacteristics,
   CommercialInfo,
   HSHeading,
-  ExcludedHeading,
-  COMPLETE_GRI_RULES as GRI_RULES
-} from './gri-engine-wco'
+  ExcludedHeading
+}
 
-// Import the WCO-compliant engine
-import { WCOCompliantGRIEngine } from './gri-engine-wco'
+// Re-export constants
+export { COMPLETE_GRI_RULES as GRI_RULES }
 
 // Export the enhanced engine as the default GRIEngine
 export class GRIEngine extends WCOCompliantGRIEngine {
-  constructor(initialContext: Partial<import('./gri-engine-wco').GRIContext>) {
+  constructor(initialContext: Partial<GRIContext>) {
     super(initialContext)
   }
   
@@ -52,7 +70,7 @@ export class GRIEngine extends WCOCompliantGRIEngine {
     }
   }
   
-  private buildTreeFromDecisions(decisions: import('./gri-engine-wco').GRIDecision[]): any[] {
+  private buildTreeFromDecisions(decisions: GRIDecision[]): any[] {
     return decisions.map((decision, index) => ({
       id: `decision_${index}`,
       label: decision.question,

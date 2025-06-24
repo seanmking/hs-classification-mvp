@@ -13,7 +13,11 @@
     "db:seed": "tsx scripts/seed.ts",
     "db:seed-hs": "tsx src/db/seed-hs-codes.ts",
     "db:seed-legal": "tsx src/db/seed-legal-notes.ts",
-    "db:seed-all": "npm run db:seed && npm run db:seed-hs && npm run db:seed-legal"
+    "db:seed-all": "npm run db:seed && npm run db:seed-hs && npm run db:seed-legal",
+    "db:migrate:sars": "tsx src/db/migrate-to-sars.ts",
+    "db:validate": "tsx src/db/seed/validate-staging-data.ts",
+    "db:seed:sars": "tsx src/db/seed/seed-sars-data.ts",
+    "db:backup": "cp database.db \"database.backup.$(date +%Y%m%d_%H%M%S).db\""
   },
   "dependencies": {
     "next": "14.0.0",

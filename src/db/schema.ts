@@ -172,3 +172,129 @@ export const indexes = {
   auditClassificationIdIdx: sql`CREATE INDEX IF NOT EXISTS audit_classification_id_idx ON audit_logs(classification_id)`,
   auditTimestampIdx: sql`CREATE INDEX IF NOT EXISTS audit_timestamp_idx ON audit_logs(timestamp)`,
 }
+
+// SARS-compliant schema additions
+
+export const hsCodeSections = sqliteTable('hs_code_sections', {
+  code: text('code').primaryKey(),
+  romanNumeral: text('roman_numeral').notNull(),
+  description: text('description').notNull(),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull().default(sql`CURRENT_TIMESTAMP`),
+})
+
+export const hsCodesEnhanced = sqliteTable('hs_codes_enhanced', {
+  id: text('id').primaryKey(),
+  code: text('code').unique().notNull(),
+  code2Digit: text('code_2_digit'),
+  code4Digit: text('code_4_digit'),
+  code6Digit: text('code_6_digit'),
+  code8Digit: text('code_8_digit'),
+  checkDigit: text('check_digit'),
+  description: text('description').notNull(),
+  level: text('level').notNull(),
+  parentCode: text('parent_code'),
+  sectionCode: text('section_code'),
+  tariffRate: real('tariff_rate'),
+  unitOfMeasure: text('unit_of_measure'),
+  statisticalUnit: text('statistical_unit'),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`CURRENT_TIMESTAMP`),
+})
+
+export const legalNotes = sqliteTable('legal_notes', {
+  id: text('id').primaryKey(),
+  source: text('source').notNull(),
+  hsCode: text('hs_code').notNull(),
+  noteType: text('note_type').notNull(),
+  noteNumber: text('note_number'),
+  noteText: text('note_text').notNull(),
+  legalReference: text('legal_reference').notNull(),
+  effectiveDate: integer('effective_date', { mode: 'timestamp' }).notNull(),
+  expiryDate: integer('expiry_date', { mode: 'timestamp' }),
+  priority: integer('priority').notNull().default(50),
+  bindingCountries: text('binding_countries').notNull().default('["*"]'),
+  examples: text('examples'),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull().default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`CURRENT_TIMESTAMP`),
+})
+
+export const sarsAdditionalNotes = sqliteTable('sars_additional_notes', {
+  id: text('id').primaryKey(),
+  chapterCode: text('chapter_code').notNull(),
+  noteType: text('note_type').notNull(),
+  noteNumber: integer('note_number').notNull(),
+  noteText: text('note_text').notNull(),
+  conditions: text('conditions'),
+  effectiveDate: integer('effective_date', { mode: 'timestamp' }).notNull(),
+  expiryDate: integer('expiry_date', { mode: 'timestamp' }),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull().default(sql`CURRENT_TIMESTAMP`),
+})
+
+export const sectionChapterMapping = sqliteTable('section_chapter_mapping', {
+  sectionCode: text('section_code').notNull(),
+  chapterCode: text('chapter_code').notNull(),
+  fromChapter: integer('from_chapter').notNull(),
+  toChapter: integer('to_chapter').notNull(),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull().default(sql`CURRENT_TIMESTAMP`),
+})
+
+export const classificationLegalNotes = sqliteTable('classification_legal_notes', {
+  id: text('id').primaryKey(),
+  classificationId: text('classification_id').notNull().references(() => classifications.id),
+  legalNoteId: text('legal_note_id').notNull(),
+  applied: integer('applied', { mode: 'boolean' }).notNull().default(false),
+  applicationReason: text('application_reason'),
+  excludedReason: text('excluded_reason'),
+  timestamp: integer('timestamp', { mode: 'timestamp' }).notNull().default(sql`CURRENT_TIMESTAMP`),
+})
+
+export const sarsDeterminations = sqliteTable('sars_determinations', {
+  id: text('id').primaryKey(),
+  determinationNumber: text('determination_number').unique().notNull(),
+  hsCode: text('hs_code').notNull(),
+  productDescription: text('product_description').notNull(),
+  decision: text('decision').notNull(),
+  reasoning: text('reasoning').notNull(),
+  effectiveDate: integer('effective_date', { mode: 'timestamp' }).notNull(),
+  expiryDate: integer('expiry_date', { mode: 'timestamp' }),
+  appealStatus: text('appeal_status'),
+  legalBasis: text('legal_basis').notNull(),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull().default(sql`CURRENT_TIMESTAMP`),
+})
+
+export const legalNoteVersions = sqliteTable('legal_note_versions', {
+  id: text('id').primaryKey(),
+  legalNoteId: text('legal_note_id').notNull(),
+  versionNumber: integer('version_number').notNull(),
+  changeType: text('change_type').notNull(),
+  changeDescription: text('change_description').notNull(),
+  changedBy: text('changed_by').notNull(),
+  changedAt: integer('changed_at', { mode: 'timestamp' }).notNull().default(sql`CURRENT_TIMESTAMP`),
+  previousText: text('previous_text'),
+  newText: text('new_text'),
+})
+
+// Export types
+export type HSCodeSection = typeof hsCodeSections.$inferSelect
+export type NewHSCodeSection = typeof hsCodeSections.$inferInsert
+
+export type HSCodeEnhanced = typeof hsCodesEnhanced.$inferSelect
+export type NewHSCodeEnhanced = typeof hsCodesEnhanced.$inferInsert
+
+export type LegalNote = typeof legalNotes.$inferSelect
+export type NewLegalNote = typeof legalNotes.$inferInsert
+
+export type SARSAdditionalNote = typeof sarsAdditionalNotes.$inferSelect
+export type NewSARSAdditionalNote = typeof sarsAdditionalNotes.$inferInsert
+
+export type SectionChapterMapping = typeof sectionChapterMapping.$inferSelect
+export type NewSectionChapterMapping = typeof sectionChapterMapping.$inferInsert
+
+export type ClassificationLegalNote = typeof classificationLegalNotes.$inferSelect
+export type NewClassificationLegalNote = typeof classificationLegalNotes.$inferInsert
+
+export type SARSDetermination = typeof sarsDeterminations.$inferSelect
+export type NewSARSDetermination = typeof sarsDeterminations.$inferInsert
+
+export type LegalNoteVersion = typeof legalNoteVersions.$inferSelect
+export type NewLegalNoteVersion = typeof legalNoteVersions.$inferInsert

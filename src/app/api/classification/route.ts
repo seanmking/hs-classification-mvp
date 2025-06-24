@@ -405,10 +405,12 @@ export async function PUT(request: NextRequest) {
       currentRule: classification.currentStep,
       decisions: allDecisions.map(d => ({
         ruleId: d.step,
+        criterionId: d.metadata ? JSON.parse(d.metadata).criterionId || 'unknown' : 'unknown',
         question: d.question,
         answer: d.answer,
         reasoning: d.reasoning,
         confidence: d.confidence,
+        legalBasis: d.metadata ? JSON.parse(d.metadata).legalBasis || [] : [],
         timestamp: new Date(d.timestamp),
         metadata: d.metadata ? JSON.parse(d.metadata) : undefined
       }))
