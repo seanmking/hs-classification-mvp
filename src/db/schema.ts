@@ -298,3 +298,29 @@ export type NewSARSDetermination = typeof sarsDeterminations.$inferInsert
 
 export type LegalNoteVersion = typeof legalNoteVersions.$inferSelect
 export type NewLegalNoteVersion = typeof legalNoteVersions.$inferInsert
+
+// Exclusion matrix table (for tracking what codes exclude other codes)
+export const exclusionMatrix = sqliteTable('exclusion_matrix', {
+  id: text('id').primaryKey(),
+  fromHsCode: text('from_hs_code').notNull(),
+  toHsCode: text('to_hs_code').notNull(),
+  exclusionType: text('exclusion_type').notNull(), // chapter, section, heading
+  noteReference: text('note_reference').notNull(),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull().default(sql`CURRENT_TIMESTAMP`),
+})
+
+export type ExclusionMatrix = typeof exclusionMatrix.$inferSelect
+export type NewExclusionMatrix = typeof exclusionMatrix.$inferInsert
+
+// Cross-references table (for "see also" and "see" references)
+export const crossReferences = sqliteTable('cross_references', {
+  id: text('id').primaryKey(),
+  fromHsCode: text('from_hs_code').notNull(),
+  toHsCode: text('to_hs_code').notNull(),
+  referenceType: text('reference_type').notNull(), // see_also, see, compare
+  noteReference: text('note_reference').notNull(),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull().default(sql`CURRENT_TIMESTAMP`),
+})
+
+export type CrossReference = typeof crossReferences.$inferSelect
+export type NewCrossReference = typeof crossReferences.$inferInsert
